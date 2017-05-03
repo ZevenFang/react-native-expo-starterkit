@@ -1,0 +1,7 @@
+{
+  "name": "TestExpo",
+  "description": "Test expo",
+  "expo": {
+    "sdkVersion": "16.0.0"
+  }
+}
