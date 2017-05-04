@@ -1,7 +1,7 @@
 {
-  "name": "TestExpo",
-  "description": "Test expo",
   "expo": {
+    "name": "TestExpo",
+    "description": "Test expo",
     "sdkVersion": "16.0.0"
   }
 }
