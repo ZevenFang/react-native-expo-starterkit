@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Text,
   View,
-  TouchableHighlight,
   StyleSheet
 } from 'react-native';
+import Touch from '../components/Touch';
 import {connect} from 'dva/mobile';
 
 class HomePage extends React.Component {
@@ -24,12 +24,12 @@ class HomePage extends React.Component {
         <Text style={styles.welcome}>
           Count: { count }
         </Text>
-        <TouchableHighlight onPress={() => { dispatch({ type: 'count/add' }) }}>
+        <Touch onPress={() => { dispatch({ type: 'count/add' }) }}>
           <Text>Add</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => { dispatch({ type: 'count/addDelay' }) }}>
+        </Touch>
+        <Touch onPress={() => { dispatch({ type: 'count/addDelay' }) }}>
           <Text>Delay Add</Text>
-        </TouchableHighlight>
+        </Touch>
       </View>
     );
   }

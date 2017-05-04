@@ -4,10 +4,10 @@
     "description": "Test expo",
     "sdkVersion": "16.0.0",
     "ios": {
-      "bundleIdentifier": "com.zeven.testexpo",
+      "bundleIdentifier": "com.zeven.testexpo"
     },
     "android": {
-      "package": "com.zeven.testexpo",
+      "package": "com.zeven.testexpo"
     }
   }
 }
