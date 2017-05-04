@@ -2,6 +2,12 @@
   "expo": {
     "name": "TestExpo",
     "description": "Test expo",
-    "sdkVersion": "16.0.0"
+    "sdkVersion": "16.0.0",
+    "ios": {
+      "bundleIdentifier": "com.zeven.testexpo",
+    },
+    "android": {
+      "package": "com.zeven.testexpo",
+    }
   }
 }
