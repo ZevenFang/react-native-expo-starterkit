@@ -18,7 +18,7 @@ class HomePage extends React.Component {
   };
 
   render() {
-    const { dispatch, count } = this.props;
+    const { dispatch, count, navigator } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -29,6 +29,9 @@ class HomePage extends React.Component {
         </Touch>
         <Touch onPress={() => { dispatch({ type: 'count/addDelay' }) }}>
           <Text>Delay Add</Text>
+        </Touch>
+        <Touch onPress={() => navigator.push('tabs')}>
+          <Text>To Tabs</Text>
         </Touch>
       </View>
     );
