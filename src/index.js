@@ -3,9 +3,9 @@ import Expo from 'expo';
 import './pages/HomePage';
 import Router from './Router';
 import {
-  NavigationProvider,
-  StackNavigation,
+  NavigationProvider
 } from '@expo/ex-navigation';
+import DrawerNavigationLayout from './components/DrawerNavigationLayout';
 
 class App extends React.Component {
 
@@ -19,12 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <NavigationProvider router={Router}>
-        <StackNavigation initialRoute="home" defaultRouteConfig={{
-          navigationBar: {
-            backgroundColor: '#808080',
-            tintColor: 'white'
-          }
-        }}/>
+        <DrawerNavigationLayout/>
       </NavigationProvider>
     );
   }
