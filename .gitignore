@@ -3,4 +3,3 @@ node_modules/
 npm-debug.*
 .idea/
 yarn-error.log
-yarn.lock
