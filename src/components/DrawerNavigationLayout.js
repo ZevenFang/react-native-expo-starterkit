@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {View, Text} from 'native-base';
 import Router from '../Router';
 import {
   StackNavigation,
@@ -17,6 +17,17 @@ let defaultRouteConfig={
   }
 };
 
+let menus = [{
+  id: 'home',
+  title: 'Home'
+},{
+  id: 'counter',
+  title: 'Counter'
+},{
+  id: 'todos',
+  title: 'Todos'
+}];
+
 class DrawerNavigationLayout extends React.Component {
   static route = {
     navigationBar: {
@@ -32,29 +43,20 @@ class DrawerNavigationLayout extends React.Component {
         drawerWidth={300}
         renderHeader={this._renderHeader}
       >
-        <DrawerNavigationItem
-          id='home'
-          selectedStyle={styles.selectedItemStyle}
-          renderTitle={isSelected => this._renderTitle('Home', isSelected)}
-        >
-          <StackNavigation
-            id='home'
-            defaultRouteConfig={defaultRouteConfig}
-            initialRoute={Router.getRoute('home')}
-          />
-        </DrawerNavigationItem>
-
-        <DrawerNavigationItem
-          id='counter'
-          selectedStyle={styles.selectedItemStyle}
-          renderTitle={isSelected => this._renderTitle('Counter', isSelected)}
-        >
-          <StackNavigation
-            id='counter'
-            defaultRouteConfig={defaultRouteConfig}
-            initialRoute={Router.getRoute('counter')}
-          />
-        </DrawerNavigationItem>
+        {menus.map((v,k)=>(
+          <DrawerNavigationItem
+            key={k}
+            id={v.id}
+            selectedStyle={styles.selectedItemStyle}
+            renderTitle={isSelected => this._renderTitle(v.title, isSelected)}
+          >
+            <StackNavigation
+              id={v.id}
+              defaultRouteConfig={defaultRouteConfig}
+              initialRoute={Router.getRoute(v.route||v.id)}
+            />
+          </DrawerNavigationItem>
+        ))}
 
       </DrawerNavigation>
     );
@@ -68,15 +70,16 @@ class DrawerNavigationLayout extends React.Component {
   };
 
   _renderTitle(text: string, isSelected: boolean) {
+    let style = isSelected ? styles.selectedTitleText : {};
     return (
-      <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
+      <Text style={{...styles.titleText, ...style}}>
         {text}
       </Text>
     );
   };
 }
 
-const styles = StyleSheet.create({
+const styles = {
   header: {
     height: 20
   },
@@ -92,6 +95,6 @@ const styles = StyleSheet.create({
   selectedTitleText: {
     color: 'white'
   }
-});
+};
 
 export default DrawerNavigationLayout;
