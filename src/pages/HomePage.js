@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     return (
       <View style={styles.container}>
         <Touch onPress={() => navigator.push('counter')}>
-          <Text>Navigate to counter</Text>
+          <Text>Click on the upper left corner to navigate.</Text>
         </Touch>
       </View>
     );
