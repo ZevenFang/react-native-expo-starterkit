@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Content, View, Text} from 'native-base';
+import {connect} from 'dva/mobile';
 
 class TodosPage extends React.Component {
 
@@ -31,4 +32,4 @@ const styles = {
   },
 };
 
-export default TodosPage;
+export default connect(({todos})=>({todos}))(TodosPage);
