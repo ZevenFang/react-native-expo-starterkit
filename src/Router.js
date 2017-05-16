@@ -1,12 +1,12 @@
 import HomePage from './pages/HomePage'
-import TabsPage from './pages/TabsPage'
+import CounterPage from './pages/CounterPage'
 import {
   createRouter
 } from '@expo/ex-navigation';
 
 const Router = createRouter(() => ({
   home: () => HomePage,
-  tabs: () => TabsPage,
+  counter: () => CounterPage,
 }));
 
 export default Router;

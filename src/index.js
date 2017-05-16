@@ -1,6 +1,5 @@
 import React from 'react';
 import Expo from 'expo';
-import { StyleSheet, Text, View } from 'react-native';
 import './pages/HomePage';
 import Router from './Router';
 import {
@@ -20,7 +19,12 @@ class App extends React.Component {
   render() {
     return (
       <NavigationProvider router={Router}>
-        <StackNavigation initialRoute="home" />
+        <StackNavigation initialRoute="home" defaultRouteConfig={{
+          navigationBar: {
+            backgroundColor: '#808080',
+            tintColor: 'white'
+          }
+        }}/>
       </NavigationProvider>
     );
   }
