@@ -17,24 +17,19 @@ let defaultRouteConfig={
   }
 };
 
-let menus = [
-  {id: 'home', title: 'Home'},
-  {id: 'counter', title: 'Counter'},
-  {id: 'todos', title: 'Todos'}
-];
-
 class DrawerNavigationLayout extends React.Component {
   static route = {
     navigationBar: {
-      visible: false,
+      visible: false
     }
   };
 
   render() {
+    let {menus, initialItem} = this.props;
     return (
       <DrawerNavigation
         id='main'
-        initialItem='home'
+        initialItem={initialItem}
         drawerWidth={300}
         renderHeader={this._renderHeader}
       >

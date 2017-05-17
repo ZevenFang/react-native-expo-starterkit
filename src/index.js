@@ -17,9 +17,14 @@ class App extends React.Component {
   }
 
   render() {
+    let menus = [
+      {id: 'home', title: 'Home'},
+      {id: 'counter', title: 'Counter'},
+      {id: 'todos', title: 'Todos'}
+    ];
     return (
       <NavigationProvider router={Router}>
-        <DrawerNavigationLayout/>
+        <DrawerNavigationLayout menus={menus} initialItem="home"/>
       </NavigationProvider>
     );
   }
