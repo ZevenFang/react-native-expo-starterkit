@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Content, View, Text, Icon} from 'native-base';
 import {connect} from 'dva/mobile';
 import {TabNavigation, TabNavigationItem as TabItem} from '@expo/ex-navigation';
+import TodoItem from '../components/TodoItem';
 
 class TodosPage extends React.Component {
 
@@ -12,29 +13,28 @@ class TodosPage extends React.Component {
   };
 
   render() {
-
     return (
       <TabNavigation
         id="main"
         navigatorUID="main"
-        initialTab="home">
+        initialTab="all">
         <TabItem
-          id="home"
+          id="all"
           selectedStyle={styles.selectedTab}
           renderIcon={(isSelected) => <Icon name="list" style={{color: isSelected?"white":"gray"}} /> }>
-          <TodosList/>
+          <TodosList {...this.props} type="all" />
         </TabItem>
         <TabItem
-          id="posts"
+          id="active"
           selectedStyle={styles.selectedTab}
           renderIcon={(isSelected) => <Icon name="time" style={{color: isSelected?"white":"lightblue"}} /> }>
-          <TodosList/>
+          <TodosList {...this.props} type="active" />
         </TabItem>
         <TabItem
-          id="profile"
+          id="completed"
           selectedStyle={styles.selectedTab}
           renderIcon={(isSelected) => <Icon name="checkmark-circle" style={{color: isSelected?"white":"lightgreen"}} /> }>
-          <TodosList/>
+          <TodosList {...this.props} type="completed" />
         </TabItem>
       </TabNavigation>
     )
@@ -45,12 +45,13 @@ class TodosPage extends React.Component {
 class TodosList extends React.Component {
 
   render() {
+    let {todos, type} = this.props;
     return (
       <Container>
-        <Content contentContainerStyle={styles.container}>
-          <View style={{alignItems: 'center'}}>
-            <Text>Here are ready to build a TodoMVC application.</Text>
-          </View>
+        <Content>
+          {todos.list.map((v,k)=>(
+            <TodoItem key={k} text={v.text} completed={v.completed}/>
+          ))}
         </Content>
       </Container>
     )
@@ -59,10 +60,6 @@ class TodosList extends React.Component {
 }
 
 const styles = {
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
   selectedTab: {
     backgroundColor: '#AAA'
   }

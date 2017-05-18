@@ -1,19 +1,22 @@
 export default {
   namespace: 'todos',
   state: {
-    tasks: []
+    list: [
+      {text: 'hello', completed: false},
+      {text: 'world', completed: true}
+    ]
   },
   reducers: {
     del(state, {index}){
-      state.tasks.splice(index,1);
+      state.list.splice(index,1);
       return {...state};
     },
     upd(state, {index, text}){
-      state.tasks[index].text = text;
+      state.list[index].text = text;
       return {...state};
     },
     check(state, {index}){
-      state.tasks[index].completed = !state.tasks[index].completed;
+      state.list[index].completed = !state.list[index].completed;
       return {...state};
     }
   }
