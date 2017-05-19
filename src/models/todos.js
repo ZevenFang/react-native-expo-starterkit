@@ -7,6 +7,10 @@ export default {
     ]
   },
   reducers: {
+    add(state, {text}){
+      state.list.push({text, completed: false});
+      return {...state};
+    },
     del(state, {index}){
       state.list.splice(index,1);
       return {...state};

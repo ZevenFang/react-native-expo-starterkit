@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Content, View, Text, Icon} from 'native-base';
+import {Container, Content, Text, Icon, Header, Input, Item, Button} from 'native-base';
 import {connect} from 'dva/mobile';
 import {TabNavigation, TabNavigationItem as TabItem} from '@expo/ex-navigation';
 import TodoItem from '../components/TodoItem';
@@ -44,13 +44,49 @@ class TodosPage extends React.Component {
 
 class TodosList extends React.Component {
 
+  state = {
+    text: ''
+  };
+
+  addTask = () => {
+    let {dispatch} = this.props;
+    let {text} = this.state;
+    if (text.trim().length===0) return;
+    dispatch({
+      type: 'todos/add',
+      text
+    });
+    this.setState({text: ''});
+  };
+  
+  check = (index) => {
+    let {dispatch} = this.props;
+    dispatch({
+      type: 'todos/check',
+      index
+    })
+  };
+  
   render() {
     let {todos, type} = this.props;
+    let list = todos.list.map((v,k) => ({...v, index: k}));
+    if (type=='active') list = list.filter(v => !v.completed);
+    else if (type=='completed') list = list.filter(v => v.completed);
     return (
       <Container>
+        <Header style={{backgroundColor: '#808080'}} searchBar rounded>
+          <Item>
+            <Icon name="reorder" />
+            <Input placeholder="New task"
+                   onSubmitEditing={this.addTask}
+                   onChangeText={(text) => this.setState({text})}
+                   value={this.state.text}/>
+            <Icon name="checkmark" onPress={this.addTask} />
+          </Item>
+        </Header>
         <Content>
-          {todos.list.map((v,k)=>(
-            <TodoItem key={k} text={v.text} completed={v.completed}/>
+          {list.map((v,k)=>(
+            <TodoItem key={k} index={v.index} text={v.text} completed={v.completed} onPress={this.check}/>
           ))}
         </Content>
       </Container>
