@@ -3,7 +3,9 @@ export default {
   state: {
     list: [
       {text: 'hello', completed: false},
-      {text: 'world', completed: true}
+      {text: 'world', completed: true},
+      {text: 'react', completed: false},
+      {text: 'native', completed: true}
     ]
   },
   reducers: {
@@ -22,6 +24,10 @@ export default {
     check(state, {index}){
       state.list[index].completed = !state.list[index].completed;
       return {...state};
+    },
+    clearCompleted(state){
+      state.list = state.list.filter(v=>!v.completed);
+      return {...state}
     }
   }
 }

@@ -1,14 +1,20 @@
 import React from 'react';
-import {Container, Content, Text, Icon, Header, Input, Item, Button} from 'native-base';
+import {Container, Content, Text, Icon, Header, Input, Item, View} from 'native-base';
 import {connect} from 'dva/mobile';
 import {TabNavigation, TabNavigationItem as TabItem} from '@expo/ex-navigation';
 import TodoItem from '../components/TodoItem';
+import Touch from '../components/Touch';
 
 class TodosPage extends React.Component {
 
   static route = {
     navigationBar: {
-      title: 'Todos'
+      title: 'Todos',
+      renderRight: ()=>(
+        <View style={styles.headerRight}>
+          <ClearButton/>
+        </View>
+      )
     }
   };
 
@@ -85,9 +91,9 @@ class TodosList extends React.Component {
           </Item>
         </Header>
         <Content>
-          {list.map((v,k)=>(
+          {list.length>0?list.map((v,k)=>(
             <TodoItem key={k} index={v.index} text={v.text} completed={v.completed} onPress={this.check}/>
-          ))}
+          )):<View style={{alignItems: 'center', marginTop: 20}}><Text style={{color: '#808080'}}>There is no task here.</Text></View>}
         </Content>
       </Container>
     )
@@ -95,9 +101,25 @@ class TodosList extends React.Component {
 
 }
 
+@connect()
+class ClearButton extends React.Component {
+  render() {
+    return (
+      <Touch onPress={()=>{this.props.dispatch({type: 'todos/clearCompleted'})}}>
+        <Text style={{color: 'white'}}>Clear completed</Text>
+      </Touch>
+    )
+  }
+}
+
 const styles = {
   selectedTab: {
     backgroundColor: '#AAA'
+  },
+  headerRight: {
+    flex: 1,
+    justifyContent: 'center',
+    marginRight: 15
   }
 };
 
