@@ -64,6 +64,14 @@ class TodosList extends React.Component {
     });
     this.setState({text: ''});
   };
+
+  delTask = (index) => {
+    let {dispatch} = this.props;
+    dispatch({
+      type: 'todos/del',
+      index
+    });
+  };
   
   check = (index) => {
     let {dispatch} = this.props;
@@ -92,7 +100,7 @@ class TodosList extends React.Component {
         </Header>
         <Content>
           {list.length>0?list.map((v,k)=>(
-            <TodoItem key={k} index={v.index} text={v.text} completed={v.completed} onPress={this.check}/>
+            <TodoItem key={k} index={v.index} text={v.text} completed={v.completed} onPress={this.check} onDelete={this.delTask}/>
           )):<View style={{alignItems: 'center', marginTop: 20}}><Text style={{color: '#808080'}}>There is no task here.</Text></View>}
         </Content>
       </Container>

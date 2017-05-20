@@ -1,7 +1,5 @@
 import React from 'react';
 import {View, Text} from 'native-base';
-import Touch from '../components/Touch';
-import {connect} from 'dva/mobile';
 
 class HomePage extends React.Component {
 
@@ -12,12 +10,9 @@ class HomePage extends React.Component {
   };
 
   render() {
-    const { navigator } = this.props;
     return (
       <View style={styles.container}>
-        <Touch onPress={() => navigator.push('counter')}>
-          <Text>Click on the upper left corner to navigate.</Text>
-        </Touch>
+        <Text>Click on the upper left corner to navigate.</Text>
       </View>
     );
   }
@@ -28,7 +23,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-  },
+  }
 };
 
-export default connect(({ count }) => ({ count }))(HomePage);
+export default HomePage;
