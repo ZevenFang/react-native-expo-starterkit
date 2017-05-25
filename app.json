@@ -2,7 +2,7 @@
   "expo": {
     "name": "React Native Starterkit",
     "description": "react-native-starterkit",
-    "sdkVersion": "16.0.0",
+    "sdkVersion": "17.0.0",
     "ios": {
       "bundleIdentifier": "com.zeven.rnstarterkit"
     },
