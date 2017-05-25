@@ -21,7 +21,7 @@
     ]
   },
   "dependencies": {
-    "@expo/ex-navigation": "^2.11.1",
+    "@expo/ex-navigation": "^3.0.0",
     "@expo/vector-icons": "^4.1.1",
     "dva": "^1.2.1",
     "expo": "^17.0.0",
