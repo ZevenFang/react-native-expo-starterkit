@@ -27,7 +27,6 @@
     "expo": "^17.0.0",
     "native-base": "^2.1.4",
     "react": "16.0.0-alpha.6",
-    "react-dom": "^15.0.0",
     "react-native": "^0.44.0"
   }
 }
