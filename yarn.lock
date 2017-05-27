@@ -108,6 +108,32 @@
     hoist-non-react-statics "^1.2.0"
     lodash "^4.15.0"
 
+"@types/history@^2":
+  version "2.0.48"
+  resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-2.0.48.tgz#7e2868c3ad73d83c482f1d68f148c4fdc79c8a79"
+
+"@types/history@^3":
+  version "3.2.1"
+  resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-3.2.1.tgz#0039ab0e0be2a0cc22bac171d27a44588103d123"
+
+"@types/react-router-redux@^4.0.40":
+  version "4.0.46"
+  resolved "http://registry.npm.taobao.org/@types/react-router-redux/download/@types/react-router-redux-4.0.46.tgz#6f997d4a852196ab691f107b32023ebed3e47ab7"
+  dependencies:
+    "@types/history" "^3"
+    redux "^3.6.0"
+
+"@types/react-router@2.x":
+  version "2.0.49"
+  resolved "http://registry.npm.taobao.org/@types/react-router/download/@types/react-router-2.0.49.tgz#96f8ad51f07a5890ab35fd55f05170efd132552a"
+  dependencies:
+    "@types/history" "^2"
+    "@types/react" "*"
+
+"@types/react@*":
+  version "15.0.25"
+  resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-15.0.25.tgz#d396949cccc9a90b61755def9781e5aced9b2261"
+
 Base64@~0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/Base64/-/Base64-0.1.4.tgz#e9f6c6bef567fd635ea4162ab14dd329e74aa6de"
@@ -1934,10 +1960,12 @@ duplexer2@0.0.2:
   dependencies:
     readable-stream "~1.1.9"
 
-dva@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/dva/-/dva-1.2.1.tgz#b9e78a4f1812b2230134d1bb7baadd1af3630138"
+dva@^1.3.0-beta.3:
+  version "1.3.0-beta2"
+  resolved "http://registry.npm.taobao.org/dva/download/dva-1.3.0-beta2.tgz#c7d8d0121f296a40c63cb0437c245027d3ed4667"
   dependencies:
+    "@types/react-router" "2.x"
+    "@types/react-router-redux" "^4.0.40"
     babel-runtime "^6.11.6"
     flatten "^1.0.2"
     global "^4.3.1"
