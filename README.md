@@ -1,11 +1,12 @@
+# react-native-starterkit
+使用 [dva](https://github.com/dvajs/dva) + [nativebase](https://github.com/GeekyAnts/NativeBase) + [expo](https://github.com/expo/expo) 快速开发 ReactNative 脚手架
+![build](https://travis-ci.org/ZevenFang/react-native-starterkit.svg?branch=master)
+
 ## Preview
 ![Counter](https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Counter.png)
 ![Todos](https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Todos.png)
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
-
-![build](https://travis-ci.org/ZevenFang/react-native-starterkit.svg?branch=master)
-
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
 ## Table of Contents
