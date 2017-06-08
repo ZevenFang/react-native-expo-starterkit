@@ -20,7 +20,8 @@ class App extends React.Component {
     let menus = [
       {id: 'home', title: 'Home'},
       {id: 'counter', title: 'Counter'},
-      {id: 'todos', title: 'Todos'}
+      {id: 'todos', title: 'Todos'},
+      {id: 'axios', title: 'Axios'}
     ];
     return (
       <NavigationProvider router={Router}>
