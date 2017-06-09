@@ -1,4 +1,5 @@
 import {getLatest} from '../services/zhihu-api';
+import {Toast} from 'native-base';
 
 export default {
   namespace: 'zhihu',
@@ -13,10 +14,18 @@ export default {
   },
   effects: {
     *getLatest(action, {put, call}){
-      let {data} = yield call(getLatest);
-      yield put({
-        type: 'setLatest', data
-      });
+      try {
+        let {data} = yield call(getLatest);
+        yield put({
+          type: 'setLatest', data
+        });
+      } catch (err) {
+        Toast.show({
+          text: 'Network error',
+          position: 'bottom',
+          buttonText: 'Okay'
+        })
+      }
     }
   }
 }

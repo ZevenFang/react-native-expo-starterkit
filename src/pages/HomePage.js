@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'native-base';
+import {View, Text, Thumbnail} from 'native-base';
 
 class HomePage extends React.Component {
 
@@ -12,7 +12,8 @@ class HomePage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Click on the upper left corner to navigate.</Text>
+        <Thumbnail square size={100} source={require('../assets/app-icon.png')}/>
+        <Text style={{marginTop: 20}}>Click on the upper left corner to navigate.</Text>
       </View>
     );
   }
