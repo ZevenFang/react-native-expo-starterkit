@@ -1,13 +1,20 @@
 import React from 'react';
 import Expo from 'expo';
+import { DrawerNavigator } from 'react-navigation';
 import './pages/HomePage';
-import Router from './Router';
-import {
-  NavigationProvider
-} from '@expo/ex-navigation';
-import DrawerNavigationLayout from './components/DrawerNavigationLayout';
+import router from './router';
 
-class App extends React.Component {
+const App = DrawerNavigator(
+  router,
+  {
+    initialRouteName: 'Home',
+    contentOptions: {
+      activeTintColor: 'cadetblue',
+    },
+  }
+);
+
+/*class App extends React.Component {
 
   async componentWillMount() {
     await Expo.Font.loadAsync({
@@ -21,7 +28,8 @@ class App extends React.Component {
       {id: 'home', title: 'Home'},
       {id: 'counter', title: 'Counter'},
       {id: 'todos', title: 'Todos'},
-      {id: 'axios', title: 'Axios'}
+      {id: 'axios', title: 'Axios'},
+      {id: 'drawer', title: 'Drawer'}
     ];
     return (
       <NavigationProvider router={Router}>
@@ -29,6 +37,6 @@ class App extends React.Component {
       </NavigationProvider>
     );
   }
-}
+}*/
 
 export default App;

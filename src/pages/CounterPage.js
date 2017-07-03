@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Content, Text, View } from 'native-base';
 import Touch from '../components/Touch';
+import MenuHeader from '../components/MenuHeader';
 import {connect} from 'dva/mobile';
 
 class CounterPage extends Component {
-
-  static route = {
-    navigationBar: {
-      title: 'Counter'
-    }
-  };
 
   render() {
     let {count, dispatch} = this.props;
     return (
       <Container>
+        <MenuHeader title="Counter" navigation={this.props.navigation}/>
         <Content contentContainerStyle={styles.container}>
           <View style={{alignItems: 'center'}}>
             <Text>

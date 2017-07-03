@@ -1,14 +1,9 @@
 import React from 'react';
 import {Container, Content, List, ListItem, Thumbnail, Body, Text, Spinner} from 'native-base';
+import MenuHeader from '../components/MenuHeader';
 import {connect} from 'dva/mobile';
 
 class AxiosPage extends React.Component {
-
-  static route = {
-    navigationBar: {
-      title: 'Axios'
-    }
-  };
 
   constructor(props) {
     super(props);
@@ -19,9 +14,9 @@ class AxiosPage extends React.Component {
 
   render() {
     let {zhihu} = this.props;
-    console.log(zhihu.data);
     return (
       <Container>
+        <MenuHeader title="Axios" navigation={this.props.navigation}/>
         <Content contentContainerStyle={zhihu.data.length===0?styles.container:{}}>
           {zhihu.data.length===0?<Spinner color="#808080"/>:
             <List>
