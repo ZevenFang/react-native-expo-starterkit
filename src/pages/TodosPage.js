@@ -1,54 +1,28 @@
 import React from 'react';
 import {Container, Content, Text, Icon, Header, Input, Item, View} from 'native-base';
+import {TabNavigator} from 'react-navigation';
 import {connect} from 'dva/mobile';
-import {TabNavigation, TabNavigationItem as TabItem} from '@expo/ex-navigation';
 import TodoItem from '../components/TodoItem';
 import Touch from '../components/Touch';
+import MenuHeader from '../components/MenuHeader';
+
+const TodosNav = TabNavigator({
+  All: {
+    screen: ()=><TodosList type="all" />
+  },
+  Active: {
+    screen: ()=><TodosList type="active" />
+  },
+  Completed: {
+    screen: ()=><TodosList type="completed" />
+  }
+}, {
+  tabBarPosition: 'bottom',
+  animationEnabled: true,
+  swipeEnabled: true,
+});
 
 class TodosPage extends React.Component {
-
-  static route = {
-    navigationBar: {
-      title: 'Todos',
-      renderRight: ()=>(
-        <View style={styles.headerRight}>
-          <ClearButton/>
-        </View>
-      )
-    }
-  };
-
-  render() {
-    return (
-      <TabNavigation
-        id="main"
-        navigatorUID="main"
-        initialTab="all">
-        <TabItem
-          id="all"
-          selectedStyle={styles.selectedTab}
-          renderIcon={(isSelected) => <Icon name="list" style={{color: isSelected?"white":"gray"}} /> }>
-          <TodosList {...this.props} type="all" />
-        </TabItem>
-        <TabItem
-          id="active"
-          selectedStyle={styles.selectedTab}
-          renderIcon={(isSelected) => <Icon name="time" style={{color: isSelected?"white":"lightblue"}} /> }>
-          <TodosList {...this.props} type="active" />
-        </TabItem>
-        <TabItem
-          id="completed"
-          selectedStyle={styles.selectedTab}
-          renderIcon={(isSelected) => <Icon name="checkmark-circle" style={{color: isSelected?"white":"lightgreen"}} /> }>
-          <TodosList {...this.props} type="completed" />
-        </TabItem>
-      </TabNavigation>
-    )
-  }
-
-}
-
-class TodosList extends React.Component {
 
   state = {
     text: ''
@@ -65,6 +39,30 @@ class TodosList extends React.Component {
     this.setState({text: ''});
   };
 
+  render() {
+    return (
+      <Container>
+        <MenuHeader title="Todos" navigation={this.props.navigation} right={<ClearButton/>}/>
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="menu" />
+            <Input placeholder="New task"
+                   onSubmitEditing={this.addTask}
+                   onChangeText={(text) => this.setState({text})}
+                   value={this.state.text}/>
+            <Icon name="checkmark-circle" ios="md-checkmark-circle-outline" onPress={this.addTask} />
+          </Item>
+        </Header>
+        <TodosNav/>
+      </Container>
+    )
+  }
+
+}
+
+@connect(({todos})=>({todos}))
+class TodosList extends React.Component {
+
   delTask = (index) => {
     let {dispatch} = this.props;
     dispatch({
@@ -72,7 +70,7 @@ class TodosList extends React.Component {
       index
     });
   };
-  
+
   check = (index) => {
     let {dispatch} = this.props;
     dispatch({
@@ -80,30 +78,18 @@ class TodosList extends React.Component {
       index
     })
   };
-  
+
   render() {
     let {todos, type} = this.props;
     let list = todos.list.map((v,k) => ({...v, index: k}));
     if (type=='active') list = list.filter(v => !v.completed);
     else if (type=='completed') list = list.filter(v => v.completed);
     return (
-      <Container>
-        <Header style={{backgroundColor: '#808080'}} searchBar rounded>
-          <Item>
-            <Icon name="reorder" />
-            <Input placeholder="New task"
-                   onSubmitEditing={this.addTask}
-                   onChangeText={(text) => this.setState({text})}
-                   value={this.state.text}/>
-            <Icon name="checkmark" onPress={this.addTask} />
-          </Item>
-        </Header>
-        <Content>
-          {list.length>0?list.map((v,k)=>(
+      <Content>
+        {list.length>0?list.map((v,k)=>(
             <TodoItem key={k} index={v.index} text={v.text} completed={v.completed} onPress={this.check} onDelete={this.delTask}/>
           )):<View style={{alignItems: 'center', marginTop: 20}}><Text style={{color: '#808080'}}>There is no task here.</Text></View>}
-        </Content>
-      </Container>
+      </Content>
     )
   }
 
@@ -114,7 +100,7 @@ class ClearButton extends React.Component {
   render() {
     return (
       <Touch onPress={()=>{this.props.dispatch({type: 'todos/clearCompleted'})}}>
-        <Text style={{color: 'white'}}>Clear completed</Text>
+        <Text>Clear</Text>
       </Touch>
     )
   }

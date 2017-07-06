@@ -4,7 +4,7 @@ import { DrawerNavigator } from 'react-navigation';
 import './pages/HomePage';
 import router from './router';
 
-const App = DrawerNavigator(
+const Drawer = DrawerNavigator(
   router,
   {
     initialRouteName: 'Home',
@@ -14,7 +14,7 @@ const App = DrawerNavigator(
   }
 );
 
-/*class App extends React.Component {
+class App extends React.Component {
 
   async componentWillMount() {
     await Expo.Font.loadAsync({
@@ -23,20 +23,12 @@ const App = DrawerNavigator(
     });
   }
 
-  render() {
-    let menus = [
-      {id: 'home', title: 'Home'},
-      {id: 'counter', title: 'Counter'},
-      {id: 'todos', title: 'Todos'},
-      {id: 'axios', title: 'Axios'},
-      {id: 'drawer', title: 'Drawer'}
-    ];
-    return (
-      <NavigationProvider router={Router}>
-        <DrawerNavigationLayout menus={menus} initialItem="home"/>
-      </NavigationProvider>
-    );
+  render(){
+    return(
+      <Drawer/>
+    )
   }
-}*/
+
+}
 
 export default App;
