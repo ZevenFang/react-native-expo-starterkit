@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform} from 'react-native';
 import {Container, Content, Text, Icon, Header, Input, Item, View} from 'native-base';
 import {TabNavigator} from 'react-navigation';
 import {connect} from 'dva/mobile';
@@ -17,6 +18,9 @@ const TodosNav = TabNavigator({
     screen: ()=><TodosList type="completed" />
   }
 }, {
+  tabBarOptions: Platform.OS==='ios'?{
+    labelStyle: {fontSize: 15, top: -15}
+  }:{},
   tabBarPosition: 'bottom',
   animationEnabled: true,
   swipeEnabled: true,
@@ -105,16 +109,5 @@ class ClearButton extends React.Component {
     )
   }
 }
-
-const styles = {
-  selectedTab: {
-    backgroundColor: '#AAA'
-  },
-  headerRight: {
-    flex: 1,
-    justifyContent: 'center',
-    marginRight: 15
-  }
-};
 
 export default connect(({todos})=>({todos}))(TodosPage);
