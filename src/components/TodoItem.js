@@ -8,7 +8,7 @@ class TodoItem extends Component {
     let {index, completed, text, onPress, onDelete} = this.props;
     return (
       <ListItem onPress={() => onPress(index)} onLongPress={()=>{}}>
-        <CheckBox style={{backgroundColor: completed?'gray':'white', borderColor: 'gray'}} checked={completed} />
+        <CheckBox onPress={() => onPress(index)} style={{backgroundColor: completed?'gray':'white', borderColor: 'gray'}} checked={completed} />
         <Text style={{marginLeft: 15, textDecorationLine: completed?'line-through':'none'}}>{text}</Text>
         <Right>
           <Icon name="close" style={{color: '#808080'}} onPress={()=> Alert.alert(
