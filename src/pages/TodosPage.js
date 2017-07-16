@@ -18,9 +18,10 @@ const TodosNav = TabNavigator({
     screen: ()=><TodosList type="completed" />
   }
 }, {
-  tabBarOptions: Platform.OS==='ios'?{
-    labelStyle: {fontSize: 15, top: -15}
-  }:{},
+  tabBarOptions: {
+    labelStyle: Platform.OS==='ios'? {fontSize: 15, top: -15}:{},
+    style: Platform.OS==='android'?{backgroundColor: '#3F51B5'}:{}
+  },
   tabBarPosition: 'bottom',
   animationEnabled: true,
   swipeEnabled: true,
@@ -104,7 +105,7 @@ class ClearButton extends React.Component {
   render() {
     return (
       <Touch onPress={()=>{this.props.dispatch({type: 'todos/clearCompleted'})}}>
-        <Text>Clear</Text>
+        <Text style={Platform.OS==='android'?{color: 'white'}:{}}>Clear</Text>
       </Touch>
     )
   }

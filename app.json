@@ -9,6 +9,10 @@
     },
     "android": {
       "package": "com.zeven.rnstarterkit"
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#3F51B5"
     }
   }
 }
