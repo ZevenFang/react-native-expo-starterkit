@@ -3,9 +3,9 @@
 
 ![build](https://travis-ci.org/ZevenFang/react-native-starterkit.svg?branch=master)
 
-## Preview
-![Counter](https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Counter.png)
-![Todos](https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Todos.png)
+## Android preview
+![Counter](https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Counter.jpg)
+![Todos](https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Todos.jpg)
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
