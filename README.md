@@ -6,6 +6,9 @@
 ## Android preview
 <img src='https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Counter.jpg' width='45%'/> <img src='https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Todos.jpg' width='45%'/>
 
+## iOS preview
+<img src='https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Counter-iOS.png' width='45%'/> <img src='https://rawgit.com/ZevenFang/assets/master/react-native-starterkit/Todos-iOS.png' width='45%'/>
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
